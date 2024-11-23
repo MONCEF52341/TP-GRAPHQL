@@ -1,0 +1,15 @@
+version: '4'
+services:
+  tpGraphQL_mysql:
+    image: mysql:8.3.0
+    container_name: graphql_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+    ports:
+      - "3309:3306"
+    volumes:
+      - graphql_mysql_data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  graphql_mysql_data:
